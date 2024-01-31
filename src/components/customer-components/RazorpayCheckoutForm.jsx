@@ -42,7 +42,7 @@ const RazorpayCheckoutForm = ({ clientSecret, paymentValue, currency, setExterna
         }
         try {
             const options = {
-                key: __DEV__ ? "rzp_test_Ve6VQXggcxoGDJ" : "PRODUCTION_KEY",
+                key:"rzp_test_Ve6VQXggcxoGDJ",
                 currency: currency,
                 amount: paymentValue,
                 order_id: clientSecret,
