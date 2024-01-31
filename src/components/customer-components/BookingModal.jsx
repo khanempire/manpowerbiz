@@ -46,6 +46,7 @@ import { useNavigate } from "react-router-dom";
 import CheckoutFormCustomer from "./CheckoutForm-Customer";
 import { stripeHandlePaymentCustomer } from "../../helpers/stripePaymentHelperCustomer";
 import { allCodesAppended, SelectItem } from "../services/AddServices";
+import RazorpayCheckoutForm from "./RazorpayCheckoutForm";
 const stripePromise = loadStripe(
   "pk_test_51LZZvfE15s0GgNMhr1G5APbmPXyGbm10KdljXh7FWBA9QvUtisLvRVN6SAswoq2M1D6v5f0hTi484tqZDs50P8Rq00pU0tq3QQ"
 );
@@ -58,6 +59,7 @@ const BookingModal = ({ opened, setOpened }) => {
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [clientSecret, setClientSecret] = useState("");
+  const [currency, setCurrency] = useState("INR");
   const [loading, setLoading] = useState(false);
   const [disabledStepper, setDisabledStepper] = useState(false);
   const [paidBooking, setPaidBooking] = useState({});
@@ -191,7 +193,9 @@ const BookingModal = ({ opened, setOpened }) => {
       if (apiResponse.error) {
         failureNotification(`${apiResponse.msg}`);
       } else {
+        console.log("apiResponse",apiResponse)
         setClientSecret(apiResponse.data);
+        setCurrency(apiResponse.fullIntent.currency)
         nextStep();
       }
     } catch (error) {
@@ -327,7 +331,7 @@ const BookingModal = ({ opened, setOpened }) => {
                   type="submit"
                   fullWidth
                   uppercase
-                  onClick={() => {}}
+                  onClick={() => { }}
                   rightIcon={<IconArrowRight />}
                 >
                   Next
@@ -434,8 +438,8 @@ const BookingModal = ({ opened, setOpened }) => {
               <PaymentOptions
                 image={cod}
                 nextStep={nextNextStep}
-                buttonTitle={"Pay by Cash"}
-                title={"PAY BY CASH"}
+                buttonTitle={"Credit Card"}
+                title={"Credit Card"}
                 setPaymentMethod={setPaymentMethod}
                 setDataBeforeBooking={setDataBeforeBooking}
                 nextNextStep={nextNextStep}
@@ -448,21 +452,35 @@ const BookingModal = ({ opened, setOpened }) => {
           <Grid align="start">
             <Grid.Col sm={12} md={12} lg={12}>
               {clientSecret.length > 0 && (
-                <Elements options={options} stripe={stripePromise}>
-                  <CheckoutFormCustomer
-                    clientSecret={clientSecret}
-                    paymentValue={totalAmountWithTaxes}
-                    setExternalElements={setExternalElements}
-                    externalElements={externalElements}
-                    externalStripe={externalStripe}
-                    setExternalStripe={setExternalStripe}
-                    dataToSend={dataToSend}
-                    nextStep={nextNextStep}
-                    prevStep={prevStep}
-                    invoiceData={invoiceData}
-                    setInvoiceData={setInvoiceData}
-                  />
-                </Elements>
+                // <Elements options={options} stripe={stripePromise}>
+                //   <CheckoutFormCustomer
+                //     clientSecret={clientSecret}
+                //     paymentValue={totalAmountWithTaxes}
+                //     setExternalElements={setExternalElements}
+                //     externalElements={externalElements}
+                //     externalStripe={externalStripe}
+                //     setExternalStripe={setExternalStripe}
+                //     dataToSend={dataToSend}
+                //     nextStep={nextNextStep}
+                //     prevStep={prevStep}
+                //     invoiceData={invoiceData}
+                //     setInvoiceData={setInvoiceData}
+                //   />
+                // </Elements>
+                <RazorpayCheckoutForm
+                  clientSecret={clientSecret}
+                  paymentValue={totalAmountWithTaxes}
+                  setExternalElements={setExternalElements}
+                  externalElements={externalElements}
+                  externalStripe={externalStripe}
+                  setExternalStripe={setExternalStripe}
+                  dataToSend={dataToSend}
+                  nextStep={nextNextStep}
+                  prevStep={prevStep}
+                  invoiceData={invoiceData}
+                  setInvoiceData={setInvoiceData}
+                  currency={currency}
+                />
               )}
             </Grid.Col>
           </Grid>

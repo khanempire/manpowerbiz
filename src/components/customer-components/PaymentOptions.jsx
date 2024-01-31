@@ -33,47 +33,146 @@ export const PaymentOptions = ({ image, title, buttonTitle, setPaymentMethod, ne
   const { classes } = useStyles();
 
   return (
-    <Paper shadow="md" p="xl" radius="md" sx={{ backgroundImage: `url(${image})`, position: "relative" }} className={classes.card}>
-      <div
-        style={{
-          position: "absolute",
-          height: "100%",
-          width: "100%",
-          backgroundColor: "black",
-          top: 0,
-          left: 0,
-          opacity: 0.45,
-          borderRadius: "10px",
-        }}
-      ></div>
-      <div style={{ position: "initial", zIndex: 2 }}>
-        <Title order={3} className={classes.title}>
-          {title}
-        </Title>
-      </div>
-      <Button
+    <div style={{display:'flex', justifyContent:'center', alignContent:'center', marginTop:'50px'}}>
+      <Button style={{marginRight:'20px'}}
         onClick={() => {
-          if (buttonTitle == "Pay by Cash") {
-            setPaymentMethod("cod");
-            setDataBeforeBooking((prevData) => ({
-              ...prevData,
-              bookingPaymentStatus: "cod",
-            }));
-            nextStep();
-            // nextNextStep();
-          }
-          if (buttonTitle == "Credit Card") {
-            setPaymentMethod("card");
-            setDataBeforeBooking((prevData) => ({
-              ...prevData,
-              bookingPaymentStatus: "full",
-            }));
-            nextNextStep();
-          }
+          setPaymentMethod("cod");
+          setDataBeforeBooking((prevData) => ({
+            ...prevData,
+            bookingPaymentStatus: "cod",
+          }));
+          nextStep();
+          // if (buttonTitle == "Pay by Cash") {
+          //   setPaymentMethod("cod");
+          //   setDataBeforeBooking((prevData) => ({
+          //     ...prevData,
+          //     bookingPaymentStatus: "cod",
+          //   }));
+          //   nextStep();
+          //   // nextNextStep();
+          // }
+          // if (buttonTitle == "Credit Card") {
+          //   setPaymentMethod("card");
+          //   setDataBeforeBooking((prevData) => ({
+          //     ...prevData,
+          //     bookingPaymentStatus: "full",
+          //   }));
+          //   nextNextStep();
+          // }
         }}
       >
-        {buttonTitle}
+        {/* {buttonTitle} */}
+        Pay by Cash
       </Button>
-    </Paper>
+      <Button
+        onClick={() => {
+          setPaymentMethod("card");
+          setDataBeforeBooking((prevData) => ({
+            ...prevData,
+            bookingPaymentStatus: "full",
+          }));
+          nextNextStep();
+          // if (buttonTitle == "Pay by Cash") {
+          //   setPaymentMethod("cod");
+          //   setDataBeforeBooking((prevData) => ({
+          //     ...prevData,
+          //     bookingPaymentStatus: "cod",
+          //   }));
+          //   nextStep();
+          //   // nextNextStep();
+          // }
+          // if (buttonTitle == "Credit Card") {
+          //   setPaymentMethod("card");
+          //   setDataBeforeBooking((prevData) => ({
+          //     ...prevData,
+          //     bookingPaymentStatus: "full",
+          //   }));
+          //   nextNextStep();
+          // }
+        }}
+      >
+        {/* {buttonTitle} */}
+        Pay Online
+      </Button>
+    </div>
+    // <Paper shadow="md" p="xl" radius="md" sx={{ backgroundImage: `url(${image})`, position: "relative" }} className={classes.card}>
+    //   {/* <div
+    //     style={{
+    //       position: "absolute",
+    //       height: "100%",
+    //       width: "100%",
+    //       backgroundColor: "black",
+    //       top: 0,
+    //       left: 0,
+    //       opacity: 0.45,
+    //       borderRadius: "10px",
+    //     }}
+    //   ></div>
+    //   <div style={{ position: "initial", zIndex: 2 }}>
+    //     <Title order={3} className={classes.title}>
+    //       {title}
+    //     </Title>
+    //   </div> */}
+    //   <Button
+    //     onClick={() => {
+    //       setPaymentMethod("cod");
+    //       setDataBeforeBooking((prevData) => ({
+    //         ...prevData,
+    //         bookingPaymentStatus: "cod",
+    //       }));
+    //       nextStep();
+    //       // if (buttonTitle == "Pay by Cash") {
+    //       //   setPaymentMethod("cod");
+    //       //   setDataBeforeBooking((prevData) => ({
+    //       //     ...prevData,
+    //       //     bookingPaymentStatus: "cod",
+    //       //   }));
+    //       //   nextStep();
+    //       //   // nextNextStep();
+    //       // }
+    //       // if (buttonTitle == "Credit Card") {
+    //       //   setPaymentMethod("card");
+    //       //   setDataBeforeBooking((prevData) => ({
+    //       //     ...prevData,
+    //       //     bookingPaymentStatus: "full",
+    //       //   }));
+    //       //   nextNextStep();
+    //       // }
+    //     }}
+    //   >
+    //     {/* {buttonTitle} */}
+    //     Pay by Cash
+    //   </Button>
+    //   <Button
+    //     onClick={() => {
+    //       setPaymentMethod("card");
+    //       setDataBeforeBooking((prevData) => ({
+    //         ...prevData,
+    //         bookingPaymentStatus: "full",
+    //       }));
+    //       nextNextStep();
+    //       // if (buttonTitle == "Pay by Cash") {
+    //       //   setPaymentMethod("cod");
+    //       //   setDataBeforeBooking((prevData) => ({
+    //       //     ...prevData,
+    //       //     bookingPaymentStatus: "cod",
+    //       //   }));
+    //       //   nextStep();
+    //       //   // nextNextStep();
+    //       // }
+    //       // if (buttonTitle == "Credit Card") {
+    //       //   setPaymentMethod("card");
+    //       //   setDataBeforeBooking((prevData) => ({
+    //       //     ...prevData,
+    //       //     bookingPaymentStatus: "full",
+    //       //   }));
+    //       //   nextNextStep();
+    //       // }
+    //     }}
+    //   >
+    //     {/* {buttonTitle} */}
+    //     Pay Online
+    //   </Button>
+    // </Paper>
   );
 };
