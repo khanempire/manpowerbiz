@@ -2,6 +2,7 @@
 import { createStyles, Text, Container, ActionIcon, Group, rem, Stack, Image } from "@mantine/core";
 import { IconBrandFacebook, IconBrandWhatsapp, IconBrandInstagram } from "@tabler/icons-react";
 import website_logo from "../../assets/website_logo.png";
+import rateChart from '../../assets/rate_chart.pdf';
 const phoneNumber = "8420161635"; // Replace with the actual phone number
 
 const data = [
@@ -10,7 +11,7 @@ const data = [
     links: [
       {
         label: "Rate Card",
-        link: "#",
+        link: rateChart,
       },
       // {
       //   label: "Pricing",
