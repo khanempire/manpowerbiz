@@ -79,6 +79,7 @@ const BookingModal = ({ opened, setOpened }) => {
     useContext(ShoppingCartContext);
   const { loggedInUserDetails } = useContext(UserProfileContext);
   const { categoriesData } = useContext(CategoriesContext);
+  const [showRazorpay,setShowRazorpay] = useState(false);
 
   const step1Form = useForm({
     validateInputOnChange: true,
@@ -193,7 +194,7 @@ const BookingModal = ({ opened, setOpened }) => {
       if (apiResponse.error) {
         failureNotification(`${apiResponse.msg}`);
       } else {
-        console.log("apiResponse",apiResponse)
+        console.log("apiResponse", apiResponse)
         setClientSecret(apiResponse.data);
         setCurrency(apiResponse.fullIntent.currency)
         nextStep();
@@ -437,7 +438,7 @@ const BookingModal = ({ opened, setOpened }) => {
             <div>
               <PaymentOptions
                 image={cod}
-                nextStep={nextNextStep}
+                nextStep={nextStep}
                 buttonTitle={"Credit Card"}
                 title={"Credit Card"}
                 setPaymentMethod={setPaymentMethod}
@@ -449,9 +450,47 @@ const BookingModal = ({ opened, setOpened }) => {
         </Stepper.Step>
 
         <Stepper.Step label="Payment" description="Pay for your booking">
+          <p>Please pay for your booking</p>
+          <Grid justify="flex-end">
+            <Grid.Col span={6} sm={6} xs={12} md={5} lg={4} xl={3} p="md">
+              <Button
+                size="sm"
+                fullWidth
+                variant="filled"
+                // disabled={loading}
+                leftIcon={<ArrowLeft />}
+                onClick={() => {
+                  setShowRazorpay(false);
+                  prevStep()
+                  // paymentMethod === "card" ? prevStep() : prevPrevStep();
+                }}
+                uppercase
+              >
+                BACK
+              </Button>
+            </Grid.Col>
+            <Grid.Col span={6} sm={6} xs={12} md={5} lg={4} xl={3} py="md">
+              <Button
+                size="sm"
+                fullWidth
+                variant="filled"
+                // disabled={disabled}
+                // loading={loading}
+                rightIcon={<ArrowRight />}
+                uppercase
+                onClick={() => {
+                  setShowRazorpay(true);
+                  //paymentMethod === "card" ? prevStep() : createBooking();
+                }}
+              >
+                {/* {paymentMethod === "card" ? "Proceed to Payment" : "Confirm"} */}
+                Proceed to Payment
+              </Button>
+            </Grid.Col>
+          </Grid>
           <Grid align="start">
             <Grid.Col sm={12} md={12} lg={12}>
-              {clientSecret.length > 0 && (
+              {clientSecret.length > 0 && showRazorpay && (
                 // <Elements options={options} stripe={stripePromise}>
                 //   <CheckoutFormCustomer
                 //     clientSecret={clientSecret}
@@ -480,6 +519,7 @@ const BookingModal = ({ opened, setOpened }) => {
                   invoiceData={invoiceData}
                   setInvoiceData={setInvoiceData}
                   currency={currency}
+                  setShowRazorpay={setShowRazorpay}
                 />
               )}
             </Grid.Col>
@@ -518,11 +558,12 @@ const BookingModal = ({ opened, setOpened }) => {
                 rightIcon={<ArrowRight />}
                 uppercase
                 onClick={() => {
-                  // createBooking();
-                  paymentMethod === "card" ? prevStep() : createBooking();
+                  createBooking();
+                  //paymentMethod === "card" ? prevStep() : createBooking();
                 }}
               >
-                {paymentMethod === "card" ? "Proceed to Payment" : "Confirm"}
+                {/* {paymentMethod === "card" ? "Proceed to Payment" : "Confirm"} */}
+                Confirm
               </Button>
             </Grid.Col>
           </Grid>

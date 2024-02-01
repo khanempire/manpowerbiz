@@ -6,7 +6,7 @@ import { ShoppingCartContext } from "../../contexts/ShoppingCartContext";
 import {UserProfileContext} from '../../contexts/userProfileContext';
 import { postCallWithHeaders } from "../../helpers/apiCallHelpers";
 
-const RazorpayCheckoutForm = ({ clientSecret, paymentValue, currency, setExternalElements, externalElements, externalStripe, setExternalStripe, dataToSend, nextStep, prevStep, invoiceData, setInvoiceData }) => {
+const RazorpayCheckoutForm = ({ clientSecret, paymentValue, currency, setExternalElements, externalElements, externalStripe, setExternalStripe, dataToSend, nextStep, prevStep, invoiceData, setInvoiceData, setShowRazorpay }) => {
     //Razorpay payment  STUFF
     // const [succeeded, setSucceeded] = useState(false);
     // const [error, setError] = useState(null);
@@ -51,6 +51,11 @@ const RazorpayCheckoutForm = ({ clientSecret, paymentValue, currency, setExterna
                 handler: function (response) {
                     console.log("response from razorpay", response);
                     handleSubmit(response);
+                },
+                modal: {
+                    "ondismiss": function(){
+                        setShowRazorpay(false);
+                     }
                 },
                 prefill: {
                     name: loggedInUserDetails?.fullName,

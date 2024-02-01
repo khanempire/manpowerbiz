@@ -41,7 +41,7 @@ export const PaymentOptions = ({ image, title, buttonTitle, setPaymentMethod, ne
             ...prevData,
             bookingPaymentStatus: "cod",
           }));
-          nextStep();
+          nextNextStep();
           // if (buttonTitle == "Pay by Cash") {
           //   setPaymentMethod("cod");
           //   setDataBeforeBooking((prevData) => ({
@@ -71,7 +71,7 @@ export const PaymentOptions = ({ image, title, buttonTitle, setPaymentMethod, ne
             ...prevData,
             bookingPaymentStatus: "full",
           }));
-          nextNextStep();
+          nextStep();
           // if (buttonTitle == "Pay by Cash") {
           //   setPaymentMethod("cod");
           //   setDataBeforeBooking((prevData) => ({
