@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
+import {useState} from 'react';
 import { createStyles, Text, Container, ActionIcon, Group, rem, Stack, Image } from "@mantine/core";
 import { IconBrandFacebook, IconBrandWhatsapp, IconBrandInstagram } from "@tabler/icons-react";
 import website_logo from "../../assets/website_logo.png";
 import rateChart from '../../assets/rate_chart.pdf';
+import TermsAndConditions from './TermsAndConditions';
 const phoneNumber = "8420161635"; // Replace with the actual phone number
 
 const data = [
@@ -21,6 +23,10 @@ const data = [
         label: "Support",
         link: `https://wa.me/${phoneNumber}`,
       },
+      {
+        label: "Terms and Conditions",
+        link: "#"
+      }
       // {
       //   label: "Forums",
       //   link: "#",
@@ -130,7 +136,19 @@ const useStyles = createStyles((theme) => ({
     flexWrap: "wrap",
 
     [theme.fn.smallerThan("sm")]: {
-      display: "none",
+      display: "flex",
+      flexDirection: "column"
+    },
+  },
+
+  groups1: {
+    display: "flex",
+    flexWrap: "wrap",
+
+    [theme.fn.smallerThan("sm")]: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center"
     },
   },
 
@@ -181,17 +199,25 @@ const useStyles = createStyles((theme) => ({
 
 export function MainFooterComponent() {
   const { classes } = useStyles();
+  const [termsAndConditionsModal, setTermsAndConditionsModal] = useState(false);
+
+  const handleTermsAndConditions = () => {
+    setTermsAndConditionsModal(true);
+  }
 
   const groups = data?.map((group) => {
     const links = group.links.map((link, index) => (
-      <Text key={index} className={classes.link} component="a" href={link.link} target="_blank">
+      link.label === "Terms and Conditions" ? <Text key={index} className={[classes.link, classes.groups1]} component="a" onClick={handleTermsAndConditions} style={{cursor:"pointer"}}>
+      {link.label}
+    </Text> :
+      <Text key={index} className={[classes.link, classes.groups1]} component="a" href={link.link} target="_blank">
         {link.label}
       </Text>
     ));
 
     return (
       <div className={classes.wrapper} key={group.title}>
-        <Text className={classes.title}>{group.title}</Text>
+        <Text className={[classes.title, classes.groups1]}>{group.title}</Text>
         {links}
       </div>
     );
@@ -202,11 +228,11 @@ export function MainFooterComponent() {
       <Container className={classes.inner}>
         <Stack align="self-start" className={classes.inner2}>
           <Image src={website_logo} width={75}></Image>
-          <div className={classes.logo}>
+          {/* <div className={classes.logo}>
             <Text size="xs" color="dimmed" className={classes.description}>
               Build fully functional accessible web applications faster than ever
             </Text>
-          </div>
+          </div> */}
           <Group spacing={0} className={classes.social} position="right" noWrap>
             <a href="https://www.instagram.com/manpowerbiz.in?igshid=OGQ5ZDc2ODk2ZA==" target="_blank" rel="noopener noreferrer">
               <ActionIcon size="lg">
@@ -229,9 +255,10 @@ export function MainFooterComponent() {
       </Container>
       <Container className={classes.afterFooter}>
         <Text color="dimmed" size="sm">
-          © 2023 ManpowerBiz All rights reserved.
+          © 2024 ManpowerBiz All rights reserved.
         </Text>
       </Container>
+      <TermsAndConditions opened={termsAndConditionsModal} setOpened={setTermsAndConditionsModal} />
     </footer>
   );
 }
