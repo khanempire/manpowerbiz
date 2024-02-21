@@ -278,6 +278,41 @@ const TermsAndConditions = ({opened,setOpened}) => {
     <Text mt='2rem'>
         By using our platform, you acknowledge that you have read, understood, and agree to these terms and conditions. If you have any questions, please contact us at <a href={`https://wa.me/${phoneNumber}`} target='_blank' rel="noreferrer">Link</a>.
     </Text>
+
+    {/* contact us policies */}
+
+    <Title order={3} align="center" mt='2rem'>
+        Contact Us Policies
+    </Title>
+
+    <Text ml='1rem'>
+       Thank you for reaching out to us. We value your feedback and inquiries. Please find our contact information below:
+    </Text>
+
+    <Title order={4} align="left">
+        1. Contact Number:
+    </Title>
+    <Text ml='1rem'>
+    Feel free to give us a call at 8420161635 or click this <a href={`https://wa.me/${phoneNumber}`} target='_blank' rel="noreferrer"> WhatsApp Link</a>. Our customer service representatives are available from 8 A.M to 8 P.M everyday to assist you.
+    </Text>
+
+    <Title order={4} align="left">
+        2. Email Address::
+    </Title>
+    <Text ml='1rem'>
+    For any inquiries or assistance via email, you can reach us at mpb.kol@manpowerbiz.in. We aim to respond to emails within 2 days.
+    </Text>
+
+    <Title order={4} align="left">
+        3. Business Operating Address:
+    </Title>
+    <Text ml='1rem'>
+    www.manpowerbiz.in
+    PLOT - BE - 65, Action Area, Newtown,
+    Kolkata, West-Bengal, 700156
+    India
+    </Text>
+
 </Modal >
   )
 }
