@@ -17,8 +17,7 @@ const RazorpayCheckoutForm = ({ clientSecret, paymentValue, currency, setExterna
     const { loggedInUserDetails } = useContext(UserProfileContext);
     console.log("loggedInUserDetails",loggedInUserDetails);
     const __DEV__ = document.domain === "localhost";
-    console.log("env",import.meta.env.VITE_RAZORPAY_KEYID)
-    console.log("envvv")
+    
     function loadScript(src) {
         return new Promise((resolve) => {
             const script = document.createElement("script");
