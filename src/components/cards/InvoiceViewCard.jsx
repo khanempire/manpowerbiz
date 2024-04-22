@@ -104,7 +104,7 @@ const InvoiceViewCard = ({ data }) => {
             </Text>
             <Text>
               <b>Customer Name: </b>
-              {data.bookingCustomer.fullName}
+              {data.bookingCustomer?.fullName}
             </Text>
             <Text>
               <b>Customer Email: </b>

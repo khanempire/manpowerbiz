@@ -35,7 +35,8 @@ const AddUser = () => {
           ? // /^\S+@[a-zA-Z]+\.[a-zA-Z]+$/.test(value.trim())
             null
           : "Invalid Email",
-      password: location.pathname.includes("edit") ? null : (value) => (/^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*\d).{8,}$/.test(value) ? null : "Must Contain 8 Characters, 1 Uppercase, 1 Lowercase, 1 Number, 1 Special Character"),
+      password: location.pathname.includes("edit") ? null : (value) => (/^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
+      .test(value) ? null : "Must Contain 8 Characters with only character and number"),
       cpassword: location.pathname.includes("edit") ? null : (value, values) => (value === values.password ? null : "Passwords do not match"),
       fullName: (value) => (value.trim().length > 1 && /^[a-zA-Z\s]*$/.test(value.trim()) ? null : "Alphabetic Name with 2 or more characters"),
       contactNumber: (value) => (/^[1-9]\d{9}$/.test(value) ? null : "10 digit Phone Number"),

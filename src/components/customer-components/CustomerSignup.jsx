@@ -41,7 +41,7 @@ const CustomerSignup = ({ customerSwitch, setCustomerSwitch }) => {
           ? null
           : "Invalid Email",
           password: (value, values) =>
-          value.trim().length >= 8
+          /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{8,}$/.test(value.trim())
             ? null
             // : value !== values.confirmPassword
             // ? signUpForm.setFieldError("confirmPassword", "Passwords don't match")

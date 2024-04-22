@@ -26,7 +26,7 @@ const CustomerLogin = ({ setOpened, setCustomerSwitch, customerSwitch }) => {
         //   : "Invalid Email",
         null,
         password: (value) =>
-        value.trim().length >= 8
+        /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{8,}$/.test(value.trim())
           ? null
           : "Password must be 8 characters or longer",
       

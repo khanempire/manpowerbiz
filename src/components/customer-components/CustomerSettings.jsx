@@ -51,13 +51,15 @@ const CustomerSettings = () => {
 
     validate: {
       currentPassword: (value, values) =>
-        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,100}$/.test(
+      /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
+.test(
           value
         ) || value === ""
           ? null
           : "Must Contain 8 Characters, 1 Uppercase, 1 Lowercase, 1 Number, 1 Special Character",
       newPassword: (value, values) =>
-        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,100}$/.test(
+      /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
+.test(
           value
         ) || value === ""
           ? values.currentPassword !== value
@@ -280,13 +282,16 @@ const CustomerSettings = () => {
                           updateCustomerPassword.values.currentPassword &&
                           updateCustomerPassword.values.currentPassword !==
                             updateCustomerPassword.values.newPassword &&
-                          /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,100}$/.test(
+                            /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
+.test(
                             updateCustomerPassword.values.currentPassword
                           ) &&
-                          /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,100}$/.test(
+                          /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
+.test(
                             updateCustomerPassword.values.newPassword
                           ) &&
-                          /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,100}$/.test(
+                          /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
+.test(
                             updateCustomerPassword.values.confirmPassword
                           ) &&
                           updateCustomerPassword.values.newPassword ===

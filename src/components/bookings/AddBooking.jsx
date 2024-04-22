@@ -144,7 +144,7 @@ const AddBooking = () => {
     setBookingPackagePrice(0);
     let packagesToShow = [];
     packagesToShow = packagesList.filter((pkg) => {
-      if (pkg.packageService._id === generalBookingDetailsForm.values.bookingService) {
+      if (pkg?.packageService?._id === generalBookingDetailsForm.values.bookingService) {
         return pkg.packageService.serviceTitle;
       } else {
         console.log("Didnt match any");
@@ -243,28 +243,104 @@ const AddBooking = () => {
                         placeholder="Select Zip"
                         data={[
                           {
-                            value: "70024",
-                            label: "70024",
+                            value: "700052",
+                            label: "700052",
                           },
                           {
-                            value: "70025",
-                            label: "70025",
+                            value: "700028",
+                            label: "700028",
                           },
                           {
-                            value: "70026",
-                            label: "70026",
+                            value: "700074",
+                            label: "700074",
                           },
                           {
-                            value: "70027",
-                            label: "70027",
+                            value: "700065",
+                            label: "700065",
                           },
                           {
-                            value: "70028",
-                            label: "70028",
+                            value: "700079",
+                            label: "700079",
                           },
                           {
-                            value: "70029",
-                            label: "70029",
+                            value: "700080",
+                            label: "700080",
+                          },
+                          {
+                            value: "700081",
+                            label: "700081",
+                          },
+                          {
+                            value: "700051",
+                            label: "700051",
+                          },
+                          {
+                            value: "700049",
+                            label: "700049",
+                          },
+                          {
+                            value: "700129",
+                            label: "700129",
+                          },
+                          {
+                            value: "700130",
+                            label: "700130",
+                          },
+                          {
+                            value: "700155",
+                            label: "700155",
+                          },
+                          {
+                            value: "700131",
+                            label: "700131",
+                          },
+                          {
+                            value: "700048",
+                            label: "700048",
+                          },
+                          {
+                            value: "700055",
+                            label: "700055",
+                          },
+                          {
+                            value: "700089",
+                            label: "700089",
+                          },
+                          {
+                            value: "700124",
+                            label: "700124",
+                          },
+                          {
+                            value: "700125",
+                            label: "700125",
+                          },
+                          {
+                            value: "700126",
+                            label: "700126",
+                          },
+                          {
+                            value: "700127",
+                            label: "700127",
+                          },
+                          {
+                            value: "700110",
+                            label: "700110",
+                          },
+                          {
+                            value: "700111",
+                            label: "700111",
+                          },
+                          {
+                            value: "700113",
+                            label: "700113",
+                          },
+                          {
+                            value: "700114",
+                            label: "700114",
+                          },
+                          {
+                            value: "700115",
+                            label: "700115",
                           },
                         ]}
                         rightSection={<ChevronDown size={14} />}
