@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Grid, Paper, Text, Title, Button, TextInput, Stepper, Group, Select, Center, Textarea, LoadingOverlay } from "@mantine/core";
 
@@ -12,6 +13,7 @@ import { routes } from "../../helpers/routesHelper";
 import { useEffect, useState } from "react";
 import { getCallWithHeaders, postCallWithHeaders } from "../../helpers/apiCallHelpers";
 import { failureNotification, successNotification } from "../../helpers/notificationHelper";
+//import ReactToPrint from "react-to-print";
 
 const AddBooking = () => {
   const [active, setActive] = useState(0);
@@ -23,6 +25,7 @@ const AddBooking = () => {
   const [packagesToList, setPackagesToList] = useState([]);
   const [servicesList, setServicesList] = useState([]);
   const [generalBookingDetails, setGeneralBookingDetails] = useState({});
+  const componentRef = useRef();
   /*eslint-disable*/
   const [contactInfo, setContactInfo] = useState({});
 
@@ -635,11 +638,23 @@ const AddBooking = () => {
                       View All Bookings
                     </Button>
                   </Grid.Col>
-                  <Grid.Col sm={6} xs={12} md={5} lg={4} xl={3} p="md">
+                  {/* <Grid.Col sm={6} xs={12} md={5} lg={4} xl={3} p="md">
+                    <ReactToPrint
+                        trigger={() => (
+                          <Button rightIcon={<Printer />} uppercase fullWidth color="dark" size="md">
+                             Print Invoice
+                          </Button>
+                        )}
+                        content={() => componentRef.current}
+                        documentTitle={generalBookingDetails?.bookingId}
+                        pageStyle={"margin:auto"}
+                        copyStyles={true}
+                        suppressErrors={true}
+                    />
                     <Button rightIcon={<Printer />} uppercase fullWidth color="dark" size="md">
                       Print Invoice
                     </Button>
-                  </Grid.Col>
+                  </Grid.Col> */}
                 </Grid>
               </Paper>
             </Stepper.Completed>
