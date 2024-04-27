@@ -342,6 +342,74 @@ const AddBooking = () => {
                             value: "700115",
                             label: "700115",
                           },
+                          {
+                            value: "700156",
+                            label: "700156",
+                          },
+                          {
+                            value: "700161",
+                            label: "700161",
+                          },
+                          {
+                            value: "700162",
+                            label: "700162",
+                          },
+                          {
+                            value: "700163",
+                            label: "700163",
+                          },
+                          {
+                            value: "700157",
+                            label: "700157",
+                          },
+                          {
+                            value: "700106",
+                            label: "700106",
+                          },
+                          {
+                            value: "700098",
+                            label: "700098",
+                          },
+                          {
+                            value: "700064",
+                            label: "700064",
+                          },
+                          {
+                            value: "700097",
+                            label: "700097",
+                          },
+                          {
+                            value: "700091",
+                            label: "700091",
+                          },
+                          {
+                            value: "700135",
+                            label: "700135",
+                          },
+                          {
+                            value: "700136",
+                            label: "700136",
+                          },
+                          {
+                            value: "700132",
+                            label: "700132",
+                          },
+                          {
+                            value: "700159",
+                            label: "700159",
+                          },
+                          {
+                            value: "700059",
+                            label: "700059",
+                          },
+                          {
+                            value: "700101",
+                            label: "700101",
+                          },
+                          {
+                            value: "700102",
+                            label: "700102",
+                          },
                         ]}
                         rightSection={<ChevronDown size={14} />}
                         rightSectionWidth={40}
